@@ -1,0 +1,21 @@
+<!--index.wxml-->
+<view class="page-container">
+  <view class="container">
+    <view class="title">今天吃什么呢？</view>
+    
+    <view class="select-wrapper">
+      <text class="label">选择用餐时间：</text>
+      <picker bindchange="onMealTimeChange" value="{{mealTimeIndex}}" range="{{mealTimeOptions}}">
+        <view class="picker">
+          {{mealTimeOptions[mealTimeIndex]}}
+        </view>
+      </picker>
+    </view>
+    
+    <button class="btn" bindtap="randomPick">随机选择</button>
+    
+    <view class="result">
+      <text class="{{resultClass}}">{{resultText}}</text>
+    </view>
+  </view>
+</view>
