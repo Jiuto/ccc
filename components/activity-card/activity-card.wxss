@@ -1,0 +1,140 @@
+.container {
+  background: #ffffff;
+  padding: 60rpx 40rpx;
+  border-radius: 40rpx;
+  box-shadow: 0 20rpx 80rpx rgba(0,0,0,0.2);
+  text-align: center;
+  width: 90%;
+  max-width: 600rpx;
+}
+
+.title {
+  color: #333;
+  margin-bottom: 30rpx;
+  font-size: 48rpx;
+  font-weight: bold;
+}
+
+.btn {
+  background: linear-gradient(135deg, #606af0ff 0%, #e389f7ff 100%);
+  color: white;
+  border: none;
+  padding: 24rpx 60rpx;
+  font-size: 36rpx;
+  border-radius: 60rpx;
+  margin-top: 10rpx;
+}
+
+.btn::after {
+  border: none;
+}
+
+.result {
+  margin-top: 30rpx;
+  padding: 40rpx;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.result-text {
+  font-size: 40rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.result-hint {
+  color: #999;
+  font-size: 28rpx;
+}
+
+.action-btns {
+  display: flex;
+  gap: 20rpx;
+  justify-content: center;
+  margin-top: 30rpx;
+}
+
+.action-btns .btn {
+  margin-top: 0;
+  padding: 24rpx 40rpx;
+  font-size: 32rpx;
+  width: auto;
+}
+
+.consider-btn {
+  background: linear-gradient(135deg, #606af0ff 0%, #e389f7ff 100%);
+}
+
+.confirm-btn {
+  background: linear-gradient(135deg, #0bcabaff 0%, #38ef7d 100%);
+}
+
+.consider-section {
+  margin-top: 40rpx;
+  padding: 30rpx;
+  background: #f8f9fa;
+  border-radius: 20rpx;
+}
+
+.consider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.consider-title {
+  font-size: 30rpx;
+  color: #666;
+  font-weight: bold;
+}
+
+.clear-btn {
+  font-size: 26rpx;
+  color: #0aabf0ff;
+}
+
+.consider-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.consider-item {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  color: #667eea;
+  padding: 12rpx 24rpx;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+  border: 2rpx solid #667eea;
+}
+
+.delete-btn {
+  margin-left: 12rpx;
+  color: #667eea;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.final-btn {
+  margin-top: 30rpx;
+  background: linear-gradient(135deg, #0bcabaff 0%, #38ef7d 100%);
+}
+
+.final-result {
+  margin-top: 30rpx;
+  padding: 30rpx;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 20rpx;
+}
+
+.final-text {
+  font-size: 38rpx;
+  color: #333;
+  font-weight: bold;
+}

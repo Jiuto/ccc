@@ -1,0 +1,31 @@
+<view class="container">
+  <view class="title">做点什么呢？</view>
+  
+  <button class="btn" bindtap="randomPick">随机选择</button>
+  
+  <view class="result">
+    <text class="{{resultClass}}">{{resultText}}</text>
+  </view>
+
+  <view class="action-btns">
+    <button class="btn consider-btn" bindtap="addToConsider">可以考虑</button>
+    <button class="btn confirm-btn" bindtap="confirmChoice" wx:if="{{considerList.length === 0}}">就它了！</button>
+  </view>
+
+  <view class="consider-section" wx:if="{{considerList.length > 0}}">
+    <view class="consider-header">
+      <text class="consider-title">候选列表：</text>
+      <text class="clear-btn" bindtap="clearConsider">清空</text>
+    </view>
+    <view class="consider-list">
+      <view class="consider-item" wx:for="{{considerList}}" wx:key="*this">
+        <text>{{item}}</text>
+        <text class="delete-btn" data-index="{{index}}" bindtap="removeConsider">×</text>
+      </view>
+    </view>
+    <button class="btn final-btn" bindtap="finalPick">选一个！</button>
+    <view class="final-result" wx:if="{{finalResult}}">
+      <text class="final-text">最终决定：{{finalResult}}！</text>
+    </view>
+  </view>
+</view>
