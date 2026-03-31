@@ -29,7 +29,9 @@ Page({
     resultClass: 'result-hint',
     considerList: [],
     currentResult: '',
-    finalResult: ''
+    finalResult: '',
+    showCelebrate: false,
+    confirmedResult: ''
   },
 
   onMealTypeChange(e) {
@@ -94,8 +96,11 @@ Page({
     const randomIndex = Math.floor(Math.random() * considerList.length);
     const result = considerList[randomIndex];
     this.setData({
-      finalResult: result
+      finalResult: result,
+      showCelebrate: true,
+      confirmedResult: result
     });
+    wx.vibrateShort({ type: 'heavy' });
   },
 
   clearConsider() {
@@ -112,6 +117,26 @@ Page({
     this.setData({
       considerList,
       finalResult: ''
+    });
+  },
+
+  confirmChoice() {
+    const { currentResult } = this.data;
+    if (!currentResult) {
+      wx.showToast({ title: '请先随机选择', icon: 'none' });
+      return;
+    }
+    this.setData({
+      showCelebrate: true,
+      confirmedResult: currentResult
+    });
+    // 震动反馈
+    wx.vibrateShort({ type: 'heavy' });
+  },
+
+  closeCelebrate() {
+    this.setData({
+      showCelebrate: false
     });
   }
 });

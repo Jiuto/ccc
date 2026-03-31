@@ -29,7 +29,7 @@ page {
 
 .title {
   color: #333;
-  margin-bottom: 50rpx;
+  margin-bottom: 30rpx;
   font-size: 48rpx;
   font-weight: bold;
 }
@@ -67,7 +67,7 @@ page {
   padding: 24rpx 60rpx;
   font-size: 36rpx;
   border-radius: 60rpx;
-  margin-top: 20rpx;
+  margin-top: 10rpx;
 }
 
 .btn::after {
@@ -75,11 +75,10 @@ page {
 }
 
 .result {
-  margin-top: 50rpx;
+  margin-top: 30rpx;
   padding: 40rpx;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   border-radius: 30rpx;
-  min-height: 120rpx;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -96,9 +95,137 @@ page {
   font-size: 28rpx;
 }
 
-.consider-btn {
+.action-btns {
+  display: flex;
+  gap: 20rpx;
+  justify-content: center;
   margin-top: 30rpx;
+}
+
+.action-btns .btn {
+  margin-top: 0;
+  padding: 24rpx 40rpx;
+  font-size: 32rpx;
+  width: auto;
+}
+
+.consider-btn {
+  background: linear-gradient(135deg, #606af0ff 0%, #e389f7ff 100%);
+}
+
+.confirm-btn {
   background: linear-gradient(135deg, #0bcabaff 0%, #38ef7d 100%);
+}
+
+/* 庆祝特效 */
+.celebrate-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.celebrate-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.celebrate-emoji {
+  font-size: 120rpx;
+  animation: bounce 1s infinite;
+}
+
+.celebrate-emoji2 {
+  font-size: 80rpx;
+  margin-top: 20rpx;
+  animation: swing 1s infinite;
+}
+
+.celebrate-text {
+  font-size: 48rpx;
+  color: #fff;
+  margin-top: 30rpx;
+  text-shadow: 0 0 20rpx rgba(255, 255, 255, 0.5);
+}
+
+.celebrate-result {
+  font-size: 72rpx;
+  font-weight: bold;
+  color: #feca57;
+  margin-top: 20rpx;
+  text-shadow: 0 0 30rpx rgba(254, 202, 87, 0.8);
+  animation: pulse 1.5s infinite;
+}
+
+.sparkles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  font-size: 60rpx;
+  animation: sparkle 2s infinite;
+}
+
+.s1 { top: 15%; left: 10%; animation-delay: 0s; }
+.s2 { top: 20%; right: 15%; animation-delay: 0.3s; }
+.s3 { top: 60%; left: 8%; animation-delay: 0.6s; }
+.s4 { top: 70%; right: 10%; animation-delay: 0.9s; }
+.s5 { top: 40%; left: 50%; animation-delay: 1.2s; }
+
+.close-celebrate-btn {
+  margin-top: 80rpx;
+  background: linear-gradient(135deg, rgb(247, 203, 8) 0%, rgb(247, 152, 89) 100%);
+  animation: fadeInUp 0.5s ease-out 0.3s both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20rpx); }
+}
+
+@keyframes swing {
+  0%, 100% { transform: rotate(-10deg); }
+  50% { transform: rotate(10deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0.5) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40rpx); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .consider-section {
@@ -130,7 +257,6 @@ page {
   display: flex;
   flex-wrap: wrap;
   gap: 16rpx;
-  justify-content: center;
 }
 
 .consider-item {
@@ -153,13 +279,13 @@ page {
 
 .final-btn {
   margin-top: 30rpx;
-  background: linear-gradient(135deg, #1391ebff 0%, #89f0daff 100%);
+  background: linear-gradient(135deg, #0bcabaff 0%, #38ef7d 100%);
 }
 
 .final-result {
   margin-top: 30rpx;
   padding: 30rpx;
-  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   border-radius: 20rpx;
 }
 
