@@ -37,6 +37,7 @@ page {
 .select-wrapper {
   margin-bottom: 40rpx;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -44,22 +45,23 @@ page {
 .label {
   color: #666;
   font-size: 32rpx;
-  margin-right: 20rpx;
+  margin-bottom: 20rpx;
   white-space: nowrap;
 }
 
 .picker {
-  width: 100%;
+  width: 400rpx;
   padding: 24rpx 30rpx;
   font-size: 32rpx;
   border: 4rpx solid #ddd;
   border-radius: 20rpx;
   background: #fff;
   color: #333;
+  text-align: center;
 }
 
 .btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #606af0ff 0%, #e389f7ff 100%);
   color: white;
   border: none;
   padding: 24rpx 60rpx;
@@ -92,4 +94,77 @@ page {
 .result-hint {
   color: #999;
   font-size: 28rpx;
+}
+
+.consider-btn {
+  margin-top: 30rpx;
+  background: linear-gradient(135deg, #0bcabaff 0%, #38ef7d 100%);
+}
+
+.consider-section {
+  margin-top: 40rpx;
+  padding: 30rpx;
+  background: #f8f9fa;
+  border-radius: 20rpx;
+}
+
+.consider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.consider-title {
+  font-size: 30rpx;
+  color: #666;
+  font-weight: bold;
+}
+
+.clear-btn {
+  font-size: 26rpx;
+  color: #0aabf0ff;
+}
+
+.consider-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+  justify-content: center;
+}
+
+.consider-item {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  color: #667eea;
+  padding: 12rpx 24rpx;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+  border: 2rpx solid #667eea;
+}
+
+.delete-btn {
+  margin-left: 12rpx;
+  color: #667eea;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.final-btn {
+  margin-top: 30rpx;
+  background: linear-gradient(135deg, #1391ebff 0%, #89f0daff 100%);
+}
+
+.final-result {
+  margin-top: 30rpx;
+  padding: 30rpx;
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  border-radius: 20rpx;
+}
+
+.final-text {
+  font-size: 38rpx;
+  color: #333;
+  font-weight: bold;
 }

@@ -4,10 +4,10 @@
     <view class="title">今天吃什么呢？</view>
     
     <view class="select-wrapper">
-      <text class="label">选择用餐时间：</text>
-      <picker bindchange="onMealTimeChange" value="{{mealTimeIndex}}" range="{{mealTimeOptions}}">
+      <text class="label">选择用餐类型：</text>
+      <picker bindchange="onMealTypeChange" value="{{mealTypeIndex}}" range="{{mealTypeOptions}}">
         <view class="picker">
-          {{mealTimeOptions[mealTimeIndex]}}
+          {{mealTypeOptions[mealTypeIndex]}}
         </view>
       </picker>
     </view>
@@ -16,6 +16,25 @@
     
     <view class="result">
       <text class="{{resultClass}}">{{resultText}}</text>
+    </view>
+
+    <button class="btn consider-btn" bindtap="addToConsider">可以考虑</button>
+
+    <view class="consider-section" wx:if="{{considerList.length > 0}}">
+      <view class="consider-header">
+        <text class="consider-title">候选列表：</text>
+        <text class="clear-btn" bindtap="clearConsider">清空</text>
+      </view>
+      <view class="consider-list">
+        <view class="consider-item" wx:for="{{considerList}}" wx:key="*this">
+          <text>{{item}}</text>
+          <text class="delete-btn" data-index="{{index}}" bindtap="removeConsider">×</text>
+        </view>
+      </view>
+      <button class="btn final-btn" bindtap="finalPick">选！</button>
+      <view class="final-result" wx:if="{{finalResult}}">
+        <text class="final-text">最终决定：{{finalResult}}！</text>
+      </view>
     </view>
   </view>
 </view>
