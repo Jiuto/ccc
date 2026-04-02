@@ -1,0 +1,95 @@
+.container {
+  background: #ffffff;
+  padding: 60rpx 40rpx;
+  border-radius: 40rpx;
+  box-shadow: 0 20rpx 80rpx rgba(0,0,0,0.2);
+  text-align: center;
+  width: 90%;
+  max-width: 600rpx;
+}
+
+.title {
+  color: #333;
+  margin-bottom: 10rpx;
+  font-size: 48rpx;
+  font-weight: bold;
+}
+
+.sub-title {
+  color: #333;
+  margin-bottom: 30rpx;
+  font-size: 42rpx;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30rpx;
+}
+
+.input-label {
+  color: #333;
+  font-size: 32rpx;
+  margin-right: 10rpx;
+}
+
+.input-number {
+  width: 120rpx;
+  height: 60rpx;
+  border: 2rpx solid #ddd;
+  border-radius: 8rpx;
+  text-align: center;
+  font-size: 32rpx;
+  padding: 0 10rpx;
+}
+
+.input-unit {
+  color: #333;
+  font-size: 32rpx;
+  margin-left: 10rpx;
+}
+
+.btn {
+  background: linear-gradient(135deg, #606af0ff 0%, #e389f7ff 100%);
+  color: white;
+  border: none;
+  padding: 24rpx 60rpx;
+  font-size: 36rpx;
+  border-radius: 60rpx;
+  margin-top: 10rpx;
+}
+
+.btn::after {
+  border: none;
+}
+
+/* 自定义提示框 */
+.custom-toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: rgba(0, 0, 0, 0.85);
+  padding: 30rpx 60rpx;
+  border-radius: 20rpx;
+  min-width: 400rpx;
+  max-width: 600rpx;
+  text-align: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.custom-toast.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.custom-toast-text {
+  color: #fff;
+  font-size: 32rpx;
+  line-height: 1.5;
+  word-wrap: break-word;
+}

@@ -14,22 +14,37 @@
         <activity-card bind:celebrate="onCelebrate" />
       </scroll-view>
     </swiper-item>
+
+    <!-- 卡片3: 喝不喝 -->
+    <swiper-item>
+      <scroll-view class="card-scroll" scroll-y="{{true}}">
+        <drunk-card bind:celebrate="onCelebrate" />
+      </scroll-view>
+    </swiper-item>
   </swiper>
 
   <!-- 选中特效 -->
   <view class="celebrate-overlay {{showCelebrate ? 'show' : ''}}" wx:if="{{showCelebrate}}">
     <view class="celebrate-content">
-      <view class="celebrate-emoji">🎉</view>
-      <view class="celebrate-result">{{confirmedResult}}</view>
+      <view class="celebrate-emoji">{{isSadStyle ? '🌧️' : '🎉'}}</view>
+      <view class="celebrate-result {{isSadStyle ? 'sad-result' : ''}}">{{confirmedResult}}</view>
       <view class="celebrate-emoji2">{{celebrateEmoji}}</view>
-      <view class="sparkles">
+      <view class="sparkles" wx:if="{{!isSadStyle}}">
         <text class="sparkle s1">✨</text>
         <text class="sparkle s2">⭐</text>
         <text class="sparkle s3">✨</text>
         <text class="sparkle s4">🌟</text>
         <text class="sparkle s5">✨</text>
       </view>
+      <!-- 悲伤特效 -->
+      <view class="sad-effects" wx:if="{{isSadStyle}}">
+        <text class="raindrop r1">💧</text>
+        <text class="raindrop r2">💧</text>
+        <text class="raindrop r3">💧</text>
+        <text class="raindrop r4">💧</text>
+        <text class="raindrop r5">💧</text>
+      </view>
     </view>
-    <button class="btn close-celebrate-btn" bindtap="closeCelebrate">好的！</button>
+    <button class="btn close-celebrate-btn {{isSadStyle ? 'sad-btn' : ''}}" bindtap="closeCelebrate">{{isSadStyle ? '好叭！' : '好的！'}}</button>
   </view>
 </view>

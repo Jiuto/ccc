@@ -34,7 +34,8 @@ page {
 }
 
 .card-scroll food-card,
-.card-scroll activity-card {
+.card-scroll activity-card,
+.card-scroll drunk-card {
   display: flex;
   justify-content: center;
   min-height: 100%;
@@ -86,6 +87,13 @@ page {
   animation: pulse 1.5s infinite;
 }
 
+/* 悲伤风格结果 */
+.sad-result {
+  color: #5f6c7b;
+  text-shadow: 0 0 30rpx rgba(95, 108, 123, 0.6);
+  animation: sadPulse 1.5s infinite;
+}
+
 .sparkles {
   position: absolute;
   width: 100%;
@@ -105,6 +113,26 @@ page {
 .s4 { top: 70%; right: 10%; animation-delay: 0.9s; }
 .s5 { top: 40%; left: 50%; animation-delay: 1.2s; }
 
+/* 悲伤特效 */
+.sad-effects {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.raindrop {
+  position: absolute;
+  font-size: 50rpx;
+  animation: rainDrop 1.5s infinite;
+}
+
+.r1 { top: 10%; left: 15%; animation-delay: 0s; }
+.r2 { top: 15%; right: 20%; animation-delay: 0.3s; }
+.r3 { top: 50%; left: 10%; animation-delay: 0.6s; }
+.r4 { top: 55%; right: 15%; animation-delay: 0.9s; }
+.r5 { top: 75%; left: 50%; animation-delay: 1.2s; }
+
 .btn {
   background: linear-gradient(135deg, #606af0ff 0%, #e389f7ff 100%);
   color: white;
@@ -123,6 +151,11 @@ page {
   margin-top: 80rpx;
   background: linear-gradient(135deg, rgb(247, 203, 8) 0%, rgb(247, 152, 89) 100%);
   animation: fadeInUp 0.5s ease-out 0.3s both;
+}
+
+/* 悲伤风格按钮 */
+.sad-btn {
+  background: linear-gradient(135deg, #5f6c7b 0%, #7a8b99 100%);
 }
 
 @keyframes fadeIn {
@@ -159,4 +192,20 @@ page {
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(40rpx); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes sadPulse {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(0.95); opacity: 1; }
+}
+
+@keyframes rainDrop {
+  0% { opacity: 0; transform: translateY(-20rpx); }
+  50% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(20rpx); }
+}
+
+@keyframes cloudFloat {
+  0%, 100% { transform: translateX(-50%) rotate(0deg); }
+  50% { transform: translateX(-50%) rotate(5deg); }
 }

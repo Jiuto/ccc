@@ -19,7 +19,7 @@
     </view>
     <view class="consider-list">
       <view class="consider-item" wx:for="{{considerList}}" wx:key="*this">
-        <text>{{item}}</text>
+        <text>{{item.text}}</text>
         <text class="delete-btn" data-index="{{index}}" bindtap="removeConsider">×</text>
       </view>
     </view>

@@ -1,0 +1,17 @@
+<view class="container">
+  <view class="title">喝不喝</view>
+  <view class="sub-title">这是一个问题</view>
+
+  <view class="input-container">
+    <text class="input-label">这周已喝：</text>
+    <input class="input-number" type="number" value="{{weekDrinkCount}}" bindinput="onInput" />
+    <text class="input-unit">瓶</text>
+  </view>
+
+  <button class="btn" bindtap="randomPick">来吧！</button>
+
+  <!-- 自定义提示框 -->
+  <view class="custom-toast {{showToast ? 'show' : ''}}" wx:if="{{showToast}}">
+    <text class="custom-toast-text">{{toastMessage}}</text>
+  </view>
+</view>

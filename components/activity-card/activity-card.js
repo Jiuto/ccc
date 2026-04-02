@@ -1,10 +1,24 @@
 // components/activity-card/activity-card.js
 
-// 做点什么-选项
+// 做点什么 - 选项
 const activityOptions = [
-  '看小说', '买买买', '打游戏', '玩俩猫', '刷视频', '看综艺', '玩桌游',
-  '整点吃的', '打扫卫生', '去散步', '跳个操', '出去玩', '打万万',
-  '练个字', '戳毛毡', '画个画', '把我完善一下'
+  { text: '看小说', icon: '📚' },
+  { text: '买买买', icon: '🛍️' },
+  { text: '打游戏', icon: '🎮' },
+  { text: '玩俩猫', icon: '🐱' },
+  { text: '刷视频', icon: '📱' },
+  { text: '看综艺', icon: '📺' },
+  { text: '玩桌游', icon: '🎲' },
+  { text: '整点吃的', icon: '🍔' },
+  { text: '打扫卫生', icon: '🧹' },
+  { text: '去散步', icon: '🚶' },
+  { text: '跳个操', icon: '💃' },
+  { text: '出去玩', icon: '🎉' },
+  { text: '打万万', icon: '🥊' },
+  { text: '练个字', icon: '✍️' },
+  { text: '戳毛毡', icon: '🧶' },
+  { text: '画个画', icon: '🎨' },
+  { text: '把我完善一下', icon: '⚙️' }
 ];
 
 Component({
@@ -13,18 +27,21 @@ Component({
     resultClass: 'result-hint',
     considerList: [],
     currentResult: '',
-    finalResult: ''
+    currentIcon: '',
+    finalResult: '',
+    finalIcon: ''
   },
 
   methods: {
     randomPick() {
       const randomIndex = Math.floor(Math.random() * activityOptions.length);
-      const result = activityOptions[randomIndex];
+      const option = activityOptions[randomIndex];
 
       this.setData({
-        resultText: `今天就：${result}！`,
+        resultText: `今天就：${option.text}！`,
         resultClass: 'result-text',
-        currentResult: result
+        currentResult: option.text,
+        currentIcon: option.icon
       });
     },
 
@@ -34,7 +51,7 @@ Component({
         wx.showToast({ title: '请先随机选择', icon: 'none' });
         return;
       }
-      if (considerList.includes(currentResult)) {
+      if (considerList.some(item => item.text === currentResult)) {
         wx.showToast({ title: '已经在列表中了', icon: 'none' });
         return;
       }
@@ -42,8 +59,9 @@ Component({
         wx.showToast({ title: '别什么都想要', icon: 'none' });
         return;
       }
+      const option = activityOptions.find(opt => opt.text === currentResult);
       this.setData({
-        considerList: [...considerList, currentResult],
+        considerList: [...considerList, option],
         finalResult: ''
       });
     },
@@ -55,11 +73,12 @@ Component({
         return;
       }
       const randomIndex = Math.floor(Math.random() * considerList.length);
-      const result = considerList[randomIndex];
+      const option = considerList[randomIndex];
       this.setData({
-        finalResult: result
+        finalResult: option.text,
+        finalIcon: option.icon
       });
-      this.triggerEvent('celebrate', { result, emoji: '🎮' });
+      this.triggerEvent('celebrate', { result: option.text, emoji: option.icon });
       wx.vibrateShort({ type: 'heavy' });
     },
 
@@ -81,12 +100,12 @@ Component({
     },
 
     confirmChoice() {
-      const { currentResult } = this.data;
+      const { currentResult, currentIcon } = this.data;
       if (!currentResult) {
         wx.showToast({ title: '请先随机选择', icon: 'none' });
         return;
       }
-      this.triggerEvent('celebrate', { result: currentResult, emoji: '🎮' });
+      this.triggerEvent('celebrate', { result: currentResult, emoji: currentIcon });
       wx.vibrateShort({ type: 'heavy' });
     }
   }

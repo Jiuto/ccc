@@ -4,15 +4,18 @@ Page({
   data: {
     showCelebrate: false,
     confirmedResult: '',
-    celebrateEmoji: '🍽️'
+    celebrateEmoji: '🍽️',
+    isSadStyle: false
   },
 
   onCelebrate(e) {
-    const { result, emoji } = e.detail;
+    const { result, emoji, isSadStyle } = e.detail;
+    
     this.setData({
       showCelebrate: true,
       confirmedResult: result,
-      celebrateEmoji: emoji
+      celebrateEmoji: emoji,
+      isSadStyle: isSadStyle
     });
   },
 
