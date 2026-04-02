@@ -3,15 +3,44 @@
 Component({
   data: {
     weekDrinkCount: '',
+    probability: 0,
+    probabilityText: '',
     showToast: false,
-    toastMessage: ''
+    toastMessage: '',
+    showInfoModal: false,
+    showTypeSelector: false,
+    typeOptions: [
+      '奶味重一点',
+      '茶味重一点',
+      '奶茶味重一点',
+      '果茶',
+      '沙冰',
+      '咖啡'
+    ],
+    selectedTypeIndex: 0,
+    drinkBrands: {
+      '奶味重一点': ['一点点', '瑞幸（轻轻）'],
+      '茶味重一点': ['霸王茶姬', '凑凑'],
+      '奶茶味重一点': ['古茗', '茶百道', '奈雪', 'CoCo'],
+      '果茶': ['古茗', '茶百道', '奈雪', 'CoCo', '凑凑', '瑞幸'],
+      '沙冰': ['星冰乐', '瑞纳冰', '凑凑', '古茗', 'CoCo'],
+      '咖啡': ['瑞幸', '自己做叭']
+    },
+    typeIcons: {
+      '奶味重一点': '🥛',
+      '茶味重一点': '🍵',
+      '奶茶味重一点': '🧋',
+      '果茶': '🍹',
+      '沙冰': '🍧',
+      '咖啡': '☕'
+    },
   },
 
   methods: {
-    randomPick() {
+    getProbability() {
       const { weekDrinkCount } = this.data;
       if (!weekDrinkCount) {
-        this.showCustomToast('请先输入本周饮用量');
+        // this.showCustomToast('请先输入本周饮用量');
         return;
       }
 
@@ -52,6 +81,22 @@ Component({
           probability = 0.1;
         }
       }
+      
+      const probabilityText = `${Math.round(probability * 100)}%`;
+      
+      this.setData({
+        probability,
+        probabilityText
+      });
+    },
+    randomPick() {
+      const { weekDrinkCount } = this.data;
+      if (!weekDrinkCount) {
+        this.showCustomToast('请先输入本周饮用量');
+        return;
+      }
+
+      const { probability } = this.data;
 
       // 根据概率随机判断是否喝
       const isDrink = Math.random() < probability;
@@ -63,6 +108,11 @@ Component({
       if (isDrink) {
         wx.vibrateShort({ type: 'heavy' });
       }
+
+      // 显示类型选择器
+      this.setData({
+        showTypeSelector: isDrink,
+      });
     },
 
     showCustomToast(message) {
@@ -76,17 +126,49 @@ Component({
         this.setData({
           showToast: false
         });
-      }, 1000);
+      }, 2000);
     },
 
     onInput(e) {
       const value = e.detail.value;
-      // 只允许输入数字
-      if (value === '' || /^\d+$/.test(value)) {
+      // 只允许输入数字和小数点
+      if (value === '' || /^\d*\.?\d*$/.test(value)) {
         this.setData({
           weekDrinkCount: value
         });
+        this.getProbability();
       }
+    },
+
+    showInfoModal() {
+      this.setData({
+        showInfoModal: true
+      });
+    },
+
+    hideInfoModal() {
+      this.setData({
+        showInfoModal: false
+      });
+    },
+
+    onTypeChange(e) {
+      this.setData({
+        selectedTypeIndex: parseInt(e.detail.value)
+      });
+    },
+
+    randomSelectDrink() {
+      const { typeOptions, selectedTypeIndex, drinkBrands, typeIcons } = this.data;
+      const selectedType = typeOptions[selectedTypeIndex];
+      const brands = drinkBrands[selectedType];
+      const typeIcon = typeIcons[selectedType];
+      
+      // 随机选择一个品牌
+      const randomIndex = Math.floor(Math.random() * brands.length);
+      const selectedBrand = brands[randomIndex];
+
+      this.triggerEvent('celebrate', { result: selectedBrand, emoji: typeIcon });
     }
   }
 });
