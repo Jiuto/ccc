@@ -1,0 +1,76 @@
+<view class="container">
+  <view class="title">这里是菜谱哦</view>
+  
+  <!-- 初始选择按钮 -->
+  <view class="action-btns" wx:if="{{!mode}}">
+    <button class="btn" bindtap="startMatch">开始搭配吧！</button>
+    <button class="btn" bindtap="startSearch">我只是来查菜谱的！</button>
+  </view>
+
+  <!-- 选择器区域 -->
+  <view class="selector-section" wx:if="{{mode}}">
+    <!-- 类型选择器 -->
+    <picker mode="selector" range="{{typeOptions}}" value="{{typeIndex}}" bindchange="onTypeChange">
+      <view class="picker">
+        当前类型：{{typeOptions[typeIndex]}}
+      </view>
+    </picker>
+
+    <!-- 菜品选择器 -->
+    <picker mode="selector" range="{{filteredMenus}}" range-key="name" value="{{menuIndex}}" bindchange="onMenuChange">
+      <view class="picker">
+        当前菜品：{{filteredMenus[menuIndex].name || '请选择'}}
+      </view>
+    </picker>
+
+    <!-- 查菜谱模式的查看按钮 -->
+    <button class="btn view-btn" wx:if="{{mode === 'search'}}" bindtap="viewDish">查看</button>
+
+    <!-- 搭配模式的添加按钮 -->
+    <button class="btn add-btn" wx:if="{{mode === 'match'}}" bindtap="addDish">加一个！</button>
+  </view>
+
+  <!-- 查菜谱模式：结果显示 -->
+  <view class="result-section" wx:if="{{mode === 'search' && currentDish}}">
+    <view class="result-card">
+      <view class="dish-name">{{currentDish.name}}</view>
+      <view class="dish-type">{{typeEmoji[currentDish.type]}}类型：{{currentDish.type}}</view>
+      <view class="dish-content">{{currentDish.content}}</view>
+    </view>
+  </view>
+
+  <!-- 搭配模式：已选列表 -->
+  <view class="selected-section" wx:if="{{mode === 'match' && selectedDishes.length > 0}}">
+    <view class="section-title">已选菜品：</view>
+    <view class="type-group" wx:for="{{groupedDishes}}" wx:key="type">
+      <view class="type-title">{{typeEmoji[item.type]}}{{item.type}}</view>
+      <view class="dish-list">
+        <view class="dish-tag" wx:for="{{item.dishes}}" wx:key="*this">
+          {{item}}
+        </view>
+      </view>
+    </view>
+    <button class="btn final-btn" bindtap="showFinalResult">就这些！</button>
+  </view>
+
+  <!-- 搭配模式：最终结果弹窗 -->
+  <view class="modal" wx:if="{{showModal}}">
+    <view class="modal-content modal-animate">
+      <view class="modal-title">
+        <text class="title-icon">🥘</text>
+        今日菜谱！
+      </view>
+      <view class="modal-body">
+        <view class="dish-detail" wx:for="{{selectedDishes}}" wx:key="*this">
+          <view class="detail-name">{{item.name}}</view>
+          <view class="detail-type">{{typeEmoji[item.type]}}类型：{{item.type}}</view>
+          <view class="detail-content">{{item.content}}</view>
+        </view>
+      </view>
+      <button class="btn close-btn" bindtap="closeModal">好的！</button>
+    </view>
+  </view>
+
+  <!-- 返回按钮 -->
+  <button class="btn back-btn" wx:if="{{mode}}" bindtap="backToInitial">返回</button>
+</view>

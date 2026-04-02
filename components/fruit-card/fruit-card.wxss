@@ -51,6 +51,7 @@
 }
 
 .consider-btn {
+  margin-top: 30rpx;
   background: linear-gradient(135deg, #606af0ff 0%, #e389f7ff 100%);
 }
 

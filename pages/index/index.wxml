@@ -28,6 +28,13 @@
         <fruit-card bind:celebrate="onCelebrate" />
       </scroll-view>
     </swiper-item>
+
+    <!-- 卡片5: 菜谱 -->
+    <swiper-item>
+      <scroll-view class="card-scroll" scroll-y="{{true}}">
+        <menu-card bind:celebrate="onCelebrate" />
+      </scroll-view>
+    </swiper-item>
   </swiper>
 
   <!-- 选中特效 -->
