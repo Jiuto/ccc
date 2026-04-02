@@ -2,6 +2,7 @@
   "usingComponents": {
     "food-card": "/components/food-card/food-card",
     "activity-card": "/components/activity-card/activity-card",
-    "drunk-card": "/components/drunk-card/drunk-card"
+    "drunk-card": "/components/drunk-card/drunk-card",
+    "fruit-card": "/components/fruit-card/fruit-card"
   }
 }

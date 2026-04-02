@@ -1,0 +1,288 @@
+.container {
+  background: #ffffff;
+  padding: 60rpx 40rpx;
+  border-radius: 40rpx;
+  box-shadow: 0 20rpx 80rpx rgba(0,0,0,0.2);
+  text-align: center;
+  width: 90%;
+  max-width: 600rpx;
+}
+
+.title {
+  color: #333;
+  margin-bottom: 30rpx;
+  font-size: 48rpx;
+  font-weight: bold;
+}
+
+.btn {
+  background: linear-gradient(135deg, #606af0ff 0%, #e389f7ff 100%);
+  color: white;
+  border: none;
+  padding: 24rpx 60rpx;
+  font-size: 36rpx;
+  border-radius: 60rpx;
+  margin-top: 10rpx;
+}
+
+.btn::after {
+  border: none;
+}
+
+.result {
+  margin-top: 30rpx;
+  padding: 40rpx;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.result-text {
+  font-size: 40rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.result-hint {
+  color: #999;
+  font-size: 28rpx;
+}
+
+.consider-btn {
+  background: linear-gradient(135deg, #606af0ff 0%, #e389f7ff 100%);
+}
+
+.consider-section {
+  margin-top: 40rpx;
+  padding: 30rpx;
+  background: #f8f9fa;
+  border-radius: 20rpx;
+}
+
+.consider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.consider-title {
+  font-size: 30rpx;
+  color: #666;
+  font-weight: bold;
+}
+
+.clear-btn {
+  font-size: 26rpx;
+  color: #0aabf0ff;
+}
+
+.consider-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.consider-item {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  color: #667eea;
+  padding: 12rpx 24rpx;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+  border: 2rpx solid #667eea;
+}
+
+.delete-btn {
+  margin-left: 12rpx;
+  color: #667eea;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.final-btn {
+  margin-top: 30rpx;
+  background: linear-gradient(135deg, #0bcabaff 0%, #38ef7d 100%);
+}
+
+/* 最终选择弹窗 */
+.final-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.final-modal-overlay.show {
+  opacity: 1;
+}
+
+.final-modal-content {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 60rpx 40rpx;
+  border-radius: 40rpx;
+  width: 85%;
+  max-width: 600rpx;
+  box-shadow: 0 20rpx 100rpx rgba(254, 202, 87, 0.4);
+  border: 4rpx solid #feca57;
+  position: relative;
+  overflow: hidden;
+  animation: modalBounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.modal-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+
+.modal-title {
+  font-size: 56rpx;
+  font-weight: bold;
+  color: #feca57;
+  text-shadow: 0 0 30rpx rgba(254, 202, 87, 0.8), 0 0 60rpx rgba(254, 202, 87, 0.4);
+  animation: titlePulse 2s infinite;
+}
+
+.modal-emoji {
+  font-size: 80rpx;
+  margin-top: 10rpx;
+  animation: emojiBounce 1s infinite;
+}
+
+.modal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  margin-bottom: 40rpx;
+}
+
+.modal-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, rgba(254, 202, 87, 0.15) 0%, rgba(255, 159, 67, 0.15) 100%);
+  padding: 24rpx 30rpx;
+  border-radius: 30rpx;
+  border: 2rpx solid rgba(254, 202, 87, 0.5);
+  animation: itemSlideIn 0.4s ease-out both;
+}
+
+.modal-item:nth-child(1) { animation-delay: 0.1s; }
+.modal-item:nth-child(2) { animation-delay: 0.2s; }
+.modal-item:nth-child(3) { animation-delay: 0.3s; }
+.modal-item:nth-child(4) { animation-delay: 0.4s; }
+.modal-item:nth-child(5) { animation-delay: 0.5s; }
+
+.item-icon {
+  font-size: 40rpx;
+  animation: iconRotate 3s infinite;
+}
+
+.item-text {
+  flex: 1;
+  text-align: center;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #feca57;
+  text-shadow: 0 0 10rpx rgba(254, 202, 87, 0.6);
+}
+
+.item-sparkle {
+  font-size: 32rpx;
+  animation: sparkleFade 1.5s infinite;
+}
+
+.modal-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.decoration {
+  position: absolute;
+  font-size: 40rpx;
+  animation: decorationFloat 3s infinite;
+}
+
+.d1 { top: 10%; left: 8%; animation-delay: 0s; }
+.d2 { top: 15%; right: 10%; animation-delay: 0.6s; }
+.d3 { bottom: 20%; left: 12%; animation-delay: 1.2s; }
+.d4 { bottom: 15%; right: 8%; animation-delay: 1.8s; }
+.d5 { top: 50%; left: 5%; animation-delay: 2.4s; }
+
+.modal-close-btn {
+  margin-top: 20rpx;
+  background: linear-gradient(135deg, rgb(247, 203, 8) 0%, rgb(247, 152, 89) 100%);
+  animation: fadeInUp 0.5s ease-out 0.3s both;
+}
+
+/* 动画定义 */
+@keyframes modalBounceIn {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes titlePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes emojiBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10rpx); }
+}
+
+@keyframes itemSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes iconRotate {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(10deg); }
+  75% { transform: rotate(-10deg); }
+}
+
+@keyframes sparkleFade {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes decorationFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+  50% { transform: translateY(-20rpx) rotate(180deg); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -35,7 +35,9 @@ page {
 
 .card-scroll food-card,
 .card-scroll activity-card,
-.card-scroll drunk-card {
+.card-scroll drunk-card,
+.card-scroll fruit-card
+{
   display: flex;
   justify-content: center;
   min-height: 100%;

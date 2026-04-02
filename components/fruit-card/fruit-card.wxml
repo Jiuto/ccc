@@ -1,0 +1,53 @@
+<view class="container">
+  <view class="title">来选些水果吧！</view>
+  
+  <button class="btn" bindtap="randomPick">随机选择</button>
+  
+  <view class="result">
+    <text class="{{resultClass}}">{{resultText}}</text>
+  </view>
+
+  <button class="btn consider-btn" bindtap="addToConsider">加一个！</button>
+
+  <view class="consider-section" wx:if="{{considerList.length > 0}}">
+    <view class="consider-header">
+      <text class="consider-title">已选列表：</text>
+      <text class="clear-btn" bindtap="clearConsider">清空</text>
+    </view>
+    <view class="consider-list">
+      <view class="consider-item" wx:for="{{considerList}}" wx:key="*this">
+        <text>{{item}}</text>
+        <text class="delete-btn" data-index="{{index}}" bindtap="removeConsider">×</text>
+      </view>
+    </view>
+    <button class="btn final-btn" bindtap="finalPick">就这些！</button>
+  </view>
+
+  <!-- 最终选择弹窗 -->
+  <view class="final-modal-overlay {{showFinalModal ? 'show' : ''}}" wx:if="{{showFinalModal}}">
+    <view class="final-modal-content">
+      <view class="modal-header">
+        <text class="modal-title">就吃这些叭！</text>
+        <text class="modal-emoji">🎉</text>
+      </view>
+      
+      <view class="modal-list">
+        <view class="modal-item" wx:for="{{considerList}}" wx:key="*this">
+          <text class="item-icon">{{fruitEmoji[item]}}</text>
+          <text class="item-text">{{item}}</text>
+          <text class="item-sparkle">✨</text>
+        </view>
+      </view>
+      
+      <view class="modal-decoration">
+        <text class="decoration d1">⭐</text>
+        <text class="decoration d2">✨</text>
+        <text class="decoration d3">🌟</text>
+        <text class="decoration d4">⭐</text>
+        <text class="decoration d5">✨</text>
+      </view>
+      
+      <button class="btn modal-close-btn" bindtap="closeFinalModal">好的！</button>
+    </view>
+  </view>
+</view>

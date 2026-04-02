@@ -18,7 +18,8 @@ const activityOptions = [
   { text: '练个字', icon: '✍️' },
   { text: '戳毛毡', icon: '🧶' },
   { text: '画个画', icon: '🎨' },
-  { text: '把我完善一下', icon: '⚙️' }
+  { text: '把我完善一下', icon: '⚙️' },
+  { text: '包饺子', icon: '🥟' }
 ];
 
 Component({

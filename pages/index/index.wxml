@@ -21,6 +21,13 @@
         <drunk-card bind:celebrate="onCelebrate" />
       </scroll-view>
     </swiper-item>
+
+    <!-- 卡片4: 买水果 -->
+    <swiper-item>
+      <scroll-view class="card-scroll" scroll-y="{{true}}">
+        <fruit-card bind:celebrate="onCelebrate" />
+      </scroll-view>
+    </swiper-item>
   </swiper>
 
   <!-- 选中特效 -->
