@@ -1,5 +1,12 @@
 <!--index.wxml-->
 <view class="page-container">
+  <!-- 顶部提示信息 -->
+  <view class="top-tip" wx:if="{{showTopTip}}">
+    <text class="tip-icon">💡💾</text>
+    <text class="tip-text">可点击，该小程序所有选项均为续宝量身定制</text>
+    <text class="tip-close" bindtap="closeTopTip">✕</text>
+  </view>
+
   <swiper class="card-swiper" indicator-dots="{{true}}" indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#ffffff">
     <!-- 卡片1: 今天吃什么 -->
     <swiper-item>

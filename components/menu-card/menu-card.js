@@ -220,6 +220,41 @@ Component({
       this.setData({ showModal: false });
     },
 
+    // 复制菜单内容到剪贴板
+    copyMenuContent() {
+      const { selectedDishes, typeEmoji } = this.data;
+      
+      // 拼接菜单内容
+      let menuText = '🥘 今日菜谱 🥘\n\n';
+      
+      selectedDishes.forEach((dish, index) => {
+        menuText += `${index + 1}. 【${dish.name}】\n`;
+        menuText += `${typeEmoji[dish.type]}类型：${dish.type}\n`;
+        menuText += `${dish.content}\n\n`;
+        menuText += '---\n\n';
+      });
+      
+      menuText += '\n祝你用餐愉快！';
+      
+      // 复制到剪贴板
+      wx.setClipboardData({
+        data: menuText,
+        success: () => {
+          wx.showToast({
+            title: '已复制到剪贴板',
+            icon: 'success',
+            duration: 2000
+          });
+        },
+        fail: () => {
+          wx.showToast({
+            title: '复制失败',
+            icon: 'none'
+          });
+        }
+      });
+    },
+
     // 按类型分组菜品
     groupByType(dishes) {
       const groups = {};

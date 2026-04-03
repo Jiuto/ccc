@@ -5,7 +5,8 @@ Page({
     showCelebrate: false,
     confirmedResult: '',
     celebrateEmoji: '🍽️',
-    isSadStyle: false
+    isSadStyle: false,
+    showTopTip: true
   },
 
   onCelebrate(e) {
@@ -22,6 +23,12 @@ Page({
   closeCelebrate() {
     this.setData({
       showCelebrate: false
+    });
+  },
+
+  closeTopTip() {
+    this.setData({
+      showTopTip: false
     });
   }
 });

@@ -19,7 +19,9 @@ const activityOptions = [
   { text: '戳毛毡', icon: '🧶' },
   { text: '画个画', icon: '🎨' },
   { text: '把我完善一下', icon: '⚙️' },
-  { text: '包饺子', icon: '🥟' }
+  { text: '包饺子', icon: '🥟' },
+  { text: '看书', icon: '📖' },
+  { text: '找麻麻玩', icon: '👩‍👧' },
 ];
 
 Component({
@@ -30,7 +32,9 @@ Component({
     currentResult: '',
     currentIcon: '',
     finalResult: '',
-    finalIcon: ''
+    finalIcon: '',
+    showInfoModal: false,
+    activityOptions: activityOptions
   },
 
   methods: {
@@ -108,6 +112,18 @@ Component({
       }
       this.triggerEvent('celebrate', { result: currentResult, emoji: currentIcon });
       wx.vibrateShort({ type: 'heavy' });
+    },
+
+    showInfo() {
+      this.setData({
+        showInfoModal: true
+      });
+    },
+
+    closeInfoModal() {
+      this.setData({
+        showInfoModal: false
+      });
     }
   }
 });

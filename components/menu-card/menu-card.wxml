@@ -56,6 +56,10 @@
   <!-- 搭配模式：最终结果弹窗 -->
   <view class="modal" wx:if="{{showModal}}">
     <view class="modal-content modal-animate">
+      <!-- 复制按钮 -->
+      <view class="copy-icon" bindtap="copyMenuContent">
+        💾
+      </view>
       <view class="modal-title">
         <text class="title-icon">🥘</text>
         今日菜谱！

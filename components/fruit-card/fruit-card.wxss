@@ -13,6 +13,20 @@
   margin-bottom: 30rpx;
   font-size: 48rpx;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-btn {
+  font-size: 40rpx;
+  margin-right: 16rpx;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.info-btn:active {
+  transform: scale(0.8);
 }
 
 .btn {
@@ -286,4 +300,94 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* 选项说明弹窗 */
+.info-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.info-modal-overlay.show {
+  opacity: 1;
+}
+
+.info-modal-content {
+  background: white;
+  padding: 50rpx 40rpx;
+  border-radius: 30rpx;
+  width: 85%;
+  max-width: 600rpx;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 20rpx 80rpx rgba(0, 0, 0, 0.3);
+  animation: modalBounceIn 0.5s ease;
+}
+
+.info-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20rpx;
+  margin-bottom: 30rpx;
+  margin-top: 20rpx;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 20rpx;
+  border-radius: 20rpx;
+  border: 2rpx solid #dee2e6;
+  transition: all 0.3s ease;
+}
+
+.info-item:active {
+  transform: scale(0.95);
+  border-color: #667eea;
+}
+
+.info-item .item-icon {
+  font-size: 48rpx;
+  margin-bottom: 8rpx;
+}
+
+.info-item .item-text {
+  font-size: 24rpx;
+  color: #495057;
+  text-align: center;
+}
+
+.info-modal-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.info-modal-title {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #667eea;
+}
+
+.info-modal-emoji {
+  font-size: 60rpx;
+  margin-top: 10rpx;
+}
+
+.info-modal-close-btn {
+  margin-top: 20rpx;
+  background: linear-gradient(135deg, #606af0ff 0%, #e389f7ff 100%);
 }

@@ -1,5 +1,8 @@
 <view class="container">
-  <view class="title">今天吃什么呢？</view>
+  <view class="title">
+    <text class="info-btn" bindtap="showInfo">💡</text>
+    <text>今天吃什么呢？</text>
+  </view>
   
   <view class="select-wrapper">
     <text class="label">选择用餐类型：</text>
@@ -35,6 +38,27 @@
     <button class="btn final-btn" bindtap="finalPick">选一个！</button>
     <view class="final-result" wx:if="{{finalResult}}">
       <text class="final-text">最终决定：{{finalResult}}！</text>
+    </view>
+  </view>
+
+  <!-- 选项说明弹窗 -->
+  <view class="info-modal-overlay {{showInfoModal ? 'show' : ''}}" wx:if="{{showInfoModal}}">
+    <view class="info-modal-content">
+      <view class="modal-header">
+        <text class="modal-title">所有选项</text>
+        <text class="modal-emoji">📋</text>
+      </view>
+      
+      <view class="type-section" wx:for="{{mealTypes}}" wx:key="*this">
+        <view class="type-title">{{item.name}}</view>
+        <view class="option-list">
+          <view class="option-item" wx:for="{{item.options}}" wx:key="*this">
+            <text>{{item}}</text>
+          </view>
+        </view>
+      </view>
+      
+      <button class="btn modal-close-btn" bindtap="closeInfoModal">知道了</button>
     </view>
   </view>
 </view>

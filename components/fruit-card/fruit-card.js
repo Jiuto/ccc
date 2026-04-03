@@ -70,7 +70,9 @@ Component({
     currentResult: '',
     considerList: [],
     showFinalModal: false,
+    showInfoModal: false,
     fruitEmoji: fruitEmoji, // 将 emoji 映射暴露到模板中使用
+    fruitOptions: fruitOptions // 将所有选项暴露到模板中使用
   },
 
   methods: {
@@ -95,7 +97,7 @@ Component({
         wx.showToast({ title: '已经在列表中了', icon: 'none' });
         return;
       }
-      if (considerList.length >= 5) {
+      if (considerList.length >= 10) {
         wx.showToast({ title: '少吃点叭！', icon: 'none' });
         return;
       }
@@ -134,6 +136,18 @@ Component({
       considerList.splice(index, 1);
       this.setData({
         considerList,
+      });
+    },
+
+    showInfo() {
+      this.setData({
+        showInfoModal: true
+      });
+    },
+
+    closeInfoModal() {
+      this.setData({
+        showInfoModal: false
       });
     },
   }

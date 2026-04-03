@@ -275,6 +275,7 @@
   overflow-y: auto;
   box-shadow: 0 10rpx 60rpx rgba(254, 202, 87, 0.4);
   animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
 }
 
 /* 弹窗上滑动画 */
@@ -411,6 +412,22 @@
 
 .close-btn {
   background: linear-gradient(135deg, rgb(150, 155, 233) 0%, #e389f7ff 100%);
+}
+
+.copy-icon {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  font-size: 40rpx;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.copy-icon:active {
+  opacity: 1;
+  transform: scale(0.9);
 }
 
 .back-btn {

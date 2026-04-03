@@ -1,5 +1,8 @@
 <view class="container">
-  <view class="title">做点什么呢？</view>
+  <view class="title">
+    <text class="info-btn" bindtap="showInfo">💡</text>
+    <text>做点什么呢？</text>
+  </view>
   
   <button class="btn" bindtap="randomPick">随机选择</button>
   
@@ -26,6 +29,25 @@
     <button class="btn final-btn" bindtap="finalPick">选一个！</button>
     <view class="final-result" wx:if="{{finalResult}}">
       <text class="final-text">最终决定：{{finalResult}}！</text>
+    </view>
+  </view>
+
+  <!-- 选项说明弹窗 -->
+  <view class="info-modal-overlay {{showInfoModal ? 'show' : ''}}" wx:if="{{showInfoModal}}">
+    <view class="info-modal-content">
+      <view class="modal-header">
+        <text class="modal-title">所有选项</text>
+        <text class="modal-emoji">📋</text>
+      </view>
+      
+      <view class="info-list">
+        <view class="info-item" wx:for="{{activityOptions}}" wx:key="*this">
+          <text class="item-icon">{{item.icon}}</text>
+          <text class="item-text">{{item.text}}</text>
+        </view>
+      </view>
+      
+      <button class="btn modal-close-btn" bindtap="closeInfoModal">知道了</button>
     </view>
   </view>
 </view>
