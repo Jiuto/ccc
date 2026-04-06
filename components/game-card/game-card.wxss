@@ -1,0 +1,239 @@
+.container {
+  background: #ffffff;
+  padding: 40rpx 40rpx;
+  border-radius: 40rpx;
+  box-shadow: 0 20rpx 80rpx rgba(0,0,0,0.2);
+  text-align: center;
+  width: 90%;
+  max-width: 600rpx;
+}
+
+.title {
+  color: #333;
+  margin-bottom: 10rpx;
+  font-size: 48rpx;
+  font-weight: bold;
+}
+
+.highlight-text {
+  color: #606af0ff;
+}
+
+.sub-title {
+  color: #333;
+  margin-bottom: 10rpx;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15rpx;
+  width: 100%;
+}
+
+.input-label {
+  color: #333;
+  font-size: 32rpx;
+  margin-right: 10rpx;
+}
+
+.input-number {
+  width: 120rpx;
+  height: 60rpx;
+  border: 2rpx solid #ddd;
+  border-radius: 8rpx;
+  text-align: center;
+  font-size: 32rpx;
+  padding: 0 10rpx;
+}
+
+.input-unit {
+  color: #333;
+  font-size: 32rpx;
+  margin-left: 10rpx;
+}
+
+.probability-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20rpx 0 30rpx 0;
+}
+
+.probability-label {
+  color: #666;
+  font-size: 28rpx;
+  margin-right: 10rpx;
+}
+
+.probability-value {
+  color: #606af0ff;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.info-icon {
+  font-size: 32rpx;
+  margin-left: 10rpx;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.info-icon:active {
+  opacity: 1;
+}
+
+.btn {
+  background: linear-gradient(135deg, #606af0ff 0%, #e389f7ff 100%);
+  color: white;
+  border: none;
+  padding: 24rpx 60rpx;
+  font-size: 36rpx;
+  border-radius: 60rpx;
+  margin-top: 10rpx;
+}
+
+.btn::after {
+  border: none;
+}
+
+/* 自定义提示框 */
+.custom-toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: rgba(0, 0, 0, 0.85);
+  padding: 30rpx 60rpx;
+  border-radius: 20rpx;
+  min-width: 400rpx;
+  max-width: 600rpx;
+  text-align: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.custom-toast.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.custom-toast-text {
+  color: #fff;
+  font-size: 32rpx;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+/* 说明弹窗 */
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal-mask.show {
+  opacity: 1;
+}
+
+.modal-content {
+  background: #ffffff;
+  border-radius: 24rpx;
+  width: 80%;
+  max-width: 600rpx;
+  padding: 40rpx;
+  box-shadow: 0 10rpx 40rpx rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100rpx);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+
+.modal-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.modal-close {
+  font-size: 40rpx;
+  color: #999;
+  cursor: pointer;
+  padding: 0 10rpx;
+}
+
+.modal-close:active {
+  color: #333;
+}
+
+.modal-body {
+  max-height: 800rpx;
+  overflow-y: auto;
+}
+
+.rule-section {
+  padding: 10rpx 0;
+}
+
+.rule-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 20rpx;
+}
+
+.rule-item {
+  margin-bottom: 20rpx;
+}
+
+.rule-text {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.6;
+  display: block;
+}
+
+.sub-rule {
+  margin-left: 20rpx;
+  margin-top: 10rpx;
+}

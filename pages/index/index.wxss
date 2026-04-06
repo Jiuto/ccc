@@ -83,7 +83,8 @@ page {
 .card-scroll activity-card,
 .card-scroll drunk-card,
 .card-scroll fruit-card,
-.card-scroll menu-card
+.card-scroll menu-card,
+.card-scroll game-card,
 {
   display: flex;
   justify-content: center;

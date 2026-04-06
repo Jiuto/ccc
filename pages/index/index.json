@@ -4,6 +4,7 @@
     "activity-card": "/components/activity-card/activity-card",
     "drunk-card": "/components/drunk-card/drunk-card",
     "fruit-card": "/components/fruit-card/fruit-card",
-    "menu-card": "/components/menu-card/menu-card"
+    "menu-card": "/components/menu-card/menu-card",
+    "game-card": "/components/game-card/game-card"
   }
 }

@@ -42,6 +42,13 @@
         <menu-card bind:celebrate="onCelebrate" />
       </scroll-view>
     </swiper-item>
+
+    <!-- 卡片6: 游戏 -->
+    <swiper-item>
+      <scroll-view class="card-scroll" scroll-y="{{true}}">
+        <game-card bind:celebrate="onCelebrate" />
+      </scroll-view>
+    </swiper-item>
   </swiper>
 
   <!-- 选中特效 -->

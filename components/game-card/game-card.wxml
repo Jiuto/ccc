@@ -1,0 +1,72 @@
+<view class="container">
+  <view class="title">这<text class="highlight-text">游戏</text>它买不买？</view>
+  <view class="sub-title">这是一个问题</view>
+
+  <view class="input-container">
+    <view class="input-row">
+      <text class="input-label">今年已花额度：</text>
+      <input class="input-number" value="{{amount}}" bindinput="onInput" data-field="amount" />
+      <text class="input-unit">元</text>
+    </view>
+    <view class="input-row">
+      <text class="input-label">这个游戏它卖：</text>
+      <input class="input-number" value="{{price}}" bindinput="onInput" data-field="price" />
+      <text class="input-unit">元</text>
+    </view>
+    <view class="input-row">
+      <text class="input-label">这个游戏它打：</text>
+      <input class="input-number" value="{{discount}}" bindinput="onInput" data-field="discount" />
+      <text class="input-unit">折(0-10)</text>
+    </view>
+  </view>
+
+  <view class="probability-display" wx:if="{{probabilityText}}">
+    <text class="info-icon" bindtap="showInfoModal">💡</text>
+    <text class="probability-label">成功率：</text>
+    <text class="probability-value">{{probabilityText}}</text>
+  </view>
+
+  <button class="btn" bindtap="randomPick">来吧！</button>
+
+  <!-- 自定义提示框 -->
+  <view class="custom-toast {{showToast ? 'show' : ''}}" wx:if="{{showToast}}">
+    <text class="custom-toast-text">{{toastMessage}}</text>
+  </view>
+
+  <!-- 说明弹窗 -->
+  <view class="modal-mask {{showInfoModal ? 'show' : ''}}" wx:if="{{showInfoModal}}" bindtap="hideInfoModal">
+    <view class="modal-content" catchtap="">
+      <view class="modal-header">
+        <text class="modal-title">成功率计算规则</text>
+        <text class="modal-close" bindtap="hideInfoModal">×</text>
+      </view>
+      <view class="modal-body">
+        <view class="rule-section">
+          <text class="rule-title">📊 计算规则说明</text>
+          <view class="rule-item">
+            <text class="rule-text">• 标准额度 = 当前月份 × 180元</text>
+          </view>
+          <view class="rule-item">
+            <text class="rule-text">• 没超标：</text>
+            <view class="sub-rule">
+              <text class="rule-text">  - 游戏价格不超过180元或买后不超标：成功率 100%</text>
+              <text class="rule-text">  - 买后超标且游戏价格超过180元：</text>
+              <text class="rule-text">    · 折扣在8折及以下：成功率 80%</text>
+              <text class="rule-text">    · 折扣在8到9折之间：成功率 70%</text>
+              <text class="rule-text">    · 折扣在9折及以上：成功率 60%</text>
+              <text class="rule-text">    · 若游戏价格不超过20元：在上述基础上额外增加20%成功率</text>
+            </view>
+          </view>
+          <view class="rule-item">
+            <text class="rule-text">• 超标：</text>
+            <view class="sub-rule">
+              <text class="rule-text">  - 初始成功率 70%</text>
+              <text class="rule-text">  - 购买后每超出标准180元，成功率降低10%</text>
+              <text class="rule-text">  - 若游戏价格不超过20元：在上述基础上额外增加15%成功率</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
