@@ -36,6 +36,7 @@ Component({
     resultText: '点击按钮开始选择~',
     resultClass: 'result-hint',
     considerList: [],
+    considerSet: {},
     currentResult: '',
     finalResult: '',
     showInfoModal: false,
@@ -64,7 +65,7 @@ Component({
     },
 
     addToConsider() {
-      const { currentResult, considerList } = this.data;
+      const { currentResult, considerList, considerSet } = this.data;
       if (!currentResult) {
         wx.showToast({ title: '请先随机选择', icon: 'none' });
         return;
@@ -77,10 +78,34 @@ Component({
         wx.showToast({ title: '别什么都想要', icon: 'none' });
         return;
       }
+      const newSet = Object.assign({}, considerSet);
+      newSet[currentResult] = true;
       this.setData({
         considerList: [...considerList, currentResult],
+        considerSet: newSet,
         finalResult: ''
       });
+    },
+
+    addFromModal(e) {
+      const item = e.currentTarget.dataset.item;
+      const { considerList, considerSet } = this.data;
+      if (considerSet[item]) {
+        wx.showToast({ title: '已经在列表中了', icon: 'none' });
+        return;
+      }
+      if (considerList.length >= 5) {
+        wx.showToast({ title: '别什么都想要', icon: 'none' });
+        return;
+      }
+      const newSet = Object.assign({}, considerSet);
+      newSet[item] = true;
+      this.setData({
+        considerList: [...considerList, item],
+        considerSet: newSet,
+        finalResult: ''
+      });
+      wx.showToast({ title: `已加入候选`, icon: 'success', duration: 800 });
     },
 
     finalPick() {
@@ -101,6 +126,7 @@ Component({
     clearConsider() {
       this.setData({
         considerList: [],
+        considerSet: {},
         finalResult: ''
       });
     },
@@ -108,9 +134,12 @@ Component({
     removeConsider(e) {
       const index = e.currentTarget.dataset.index;
       const considerList = [...this.data.considerList];
-      considerList.splice(index, 1);
+      const removed = considerList.splice(index, 1)[0];
+      const newSet = Object.assign({}, this.data.considerSet);
+      delete newSet[removed];
       this.setData({
         considerList,
+        considerSet: newSet,
         finalResult: ''
       });
     },

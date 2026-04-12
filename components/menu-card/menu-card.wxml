@@ -45,8 +45,9 @@
     <view class="type-group" wx:for="{{groupedDishes}}" wx:key="type">
       <view class="type-title">{{typeEmoji[item.type]}}{{item.type}}</view>
       <view class="dish-list">
-        <view class="dish-tag" wx:for="{{item.dishes}}" wx:key="*this">
-          {{item}}
+        <view class="dish-tag" wx:for="{{item.dishes}}" wx:for-item="dishName" wx:key="*this">
+          <text>{{dishName}}</text>
+          <text class="dish-tag-delete" bindtap="removeDish" data-name="{{dishName}}">×</text>
         </view>
       </view>
     </view>

@@ -231,6 +231,26 @@ const menuOptions = [
     type: '小吃',
     content: '前置：\n猪肉末加盐/糖/白胡椒粉/生抽/耗油/水抓匀，加姜末/葱花抓匀，封油。\n做法：\n一层饺子皮一层肉末，用水粘连，一共两层肉末三层饺子皮，锅里煎到两面金黄即可。'
   },
+  {
+    name: '腌鸡蛋',
+    type: '小菜',
+    content: '做法：\n鸡蛋沸水下锅煮8分钟，洋葱/蒜末/葱花，生抽:水=1:2，白糖/香油，腌5个小时左右'
+  },
+  {
+    name: '青桔鸡翅',
+    type: '荤菜',
+    content: '前置：\n鸡翅改刀，小青桔汁/蒜末/蜂蜜/生抽/老抽/盐/黑胡椒粉，冷藏腌制2h。\n做法：\n空气炸锅180℃10min，刷个酱汁再烤5min。'
+  },
+  {
+    name: '波萝冰',
+    type: '小吃',
+    content: '做法：\n一只菠萝切小块，挤柠檬汁加柠檬片加话梅，雪碧600ml，茉莉花茶200ml，冷冻6小时。'
+  },
+  {
+    name: '山楂酵素',
+    type: '小吃',
+    content: '做法：\n山楂用面粉洗净，通风晾一天后去核，山楂黄冰糖1:1交替分层，冰糖底冰糖顶。前两个月每两天放气，之后每两周放气，半年后可用。气泡水加冰兑酵素即可饮用。'
+  }
 ];
 
 const typeOptions = ['荤菜', '半荤', '素菜', '汤', '主食', '小菜', '快手菜', '小吃'];
@@ -324,10 +344,10 @@ Component({
         // 检查是否已存在
         const exists = selectedDishes.some(item => item.name === dish.name);
         if (!exists) {
-          const newSelectedDishes = [...selectedDishes, dish];
+          const sorted = this.sortByType([...selectedDishes, dish]);
           this.setData({
-            selectedDishes: newSelectedDishes,
-            groupedDishes: this.groupByType(newSelectedDishes)
+            selectedDishes: sorted,
+            groupedDishes: this.groupByType(sorted)
           });
         } else {
           wx.showToast({
@@ -341,6 +361,17 @@ Component({
           icon: 'none'
         });
       }
+    },
+
+    // 删除已选菜品
+    removeDish(e) {
+      const name = e.currentTarget.dataset.name;
+      const { selectedDishes } = this.data;
+      const newSelectedDishes = selectedDishes.filter(dish => dish.name !== name);
+      this.setData({
+        selectedDishes: newSelectedDishes,
+        groupedDishes: this.groupByType(newSelectedDishes)
+      });
     },
 
     // 显示最终结果弹窗
@@ -388,7 +419,7 @@ Component({
       });
     },
 
-    // 按类型分组菜品
+    // 按类型分组菜品（按 typeOptions 顺序）
     groupByType(dishes) {
       const groups = {};
       dishes.forEach(dish => {
@@ -397,15 +428,19 @@ Component({
         }
         groups[dish.type].push(dish.name);
       });
-      
+
       const result = [];
-      for (const type in groups) {
-        result.push({
-          type: type,
-          dishes: groups[type]
-        });
-      }
+      typeOptions.forEach(type => {
+        if (groups[type]) {
+          result.push({ type, dishes: groups[type] });
+        }
+      });
       return result;
+    },
+
+    // 按 typeOptions 顺序排序菜品
+    sortByType(dishes) {
+      return [...dishes].sort((a, b) => typeOptions.indexOf(a.type) - typeOptions.indexOf(b.type));
     },
 
     // 返回初始状态

@@ -52,8 +52,9 @@
       <view class="type-section" wx:for="{{mealTypes}}" wx:key="*this">
         <view class="type-title">{{item.name}}</view>
         <view class="option-list">
-          <view class="option-item" wx:for="{{item.options}}" wx:key="*this">
+          <view class="option-item {{considerSet[item] ? 'selected' : ''}}" wx:for="{{item.options}}" wx:key="*this" bindtap="addFromModal" data-item="{{item}}">
             <text>{{item}}</text>
+            <text wx:if="{{considerSet[item]}}" class="option-check"> ✓</text>
           </view>
         </view>
       </view>

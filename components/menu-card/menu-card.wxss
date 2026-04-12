@@ -229,12 +229,24 @@
 }
 
 .dish-tag {
+  display: flex;
+  align-items: center;
   background: #fff;
   color: #667eea;
-  padding: 12rpx 24rpx;
+  padding: 12rpx 20rpx;
   border-radius: 30rpx;
   font-size: 28rpx;
   border: 2rpx solid #667eea;
+}
+
+.dish-tag-delete {
+  margin-left: 6rpx;
+  padding: 8rpx 8rpx 8rpx 10rpx;
+  color: #667eea;
+  font-size: 34rpx;
+  font-weight: bold;
+  opacity: 0.6;
+  line-height: 1;
 }
 
 .final-btn {

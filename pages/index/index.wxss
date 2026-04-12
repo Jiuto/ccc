@@ -84,11 +84,10 @@ page {
 .card-scroll drunk-card,
 .card-scroll fruit-card,
 .card-scroll menu-card,
-.card-scroll game-card,
-{
+.card-scroll game-card {
   display: flex;
   justify-content: center;
-  min-height: 100%;
+  min-height: 100vh;
   align-items: center;
   padding: 40rpx 0;
   box-sizing: border-box;
