@@ -15,10 +15,10 @@
       </scroll-view>
     </swiper-item>
 
-    <!-- 卡片2: 做点什么呢 -->
+    <!-- 卡片2: 菜谱 -->
     <swiper-item>
       <scroll-view class="card-scroll" scroll-y="{{true}}">
-        <activity-card bind:celebrate="onCelebrate" />
+        <menu-card bind:celebrate="onCelebrate" />
       </scroll-view>
     </swiper-item>
 
@@ -36,10 +36,10 @@
       </scroll-view>
     </swiper-item>
 
-    <!-- 卡片5: 菜谱 -->
+    <!-- 卡片5: 做点什么呢 -->
     <swiper-item>
       <scroll-view class="card-scroll" scroll-y="{{true}}">
-        <menu-card bind:celebrate="onCelebrate" />
+        <activity-card bind:celebrate="onCelebrate" />
       </scroll-view>
     </swiper-item>
 
