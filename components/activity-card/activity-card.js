@@ -23,6 +23,7 @@ const activityOptions = [
   { text: '看书', icon: '📖' },
   { text: '找麻麻玩', icon: '👩‍👧' },
   { text: '玩魔方', icon: '🧩' },
+  { text: '拼模型', icon: '🧩' }
 ];
 
 Component({
